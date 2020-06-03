@@ -11,8 +11,8 @@ ENV USER_ID ${USER_ID:-1000}
 ENV GROUP_ID ${GROUP_ID:-1000}
 # you may pick VERSION(#L2) and SHASUM(#L45) from https://github.com/bitcoin-core/packaging/blob/master/snap/snapcraft.yaml
 # check VERSION matches SHASUM
-ENV VERSION 0.19.1
-ENV SHASUM e91d9786cda5194e5aa0f1e064cc2c210698917773911207e56ea186ce188f93
+ENV VERSION 0.20.0
+ENV SHASUM 691ef3f61934a525dc2f007010a3a522b99b487aaf3f66f1f2014b254ae79666
 ENV ARCH x86_64-linux-gnu
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
