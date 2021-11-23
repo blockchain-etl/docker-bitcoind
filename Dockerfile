@@ -11,8 +11,8 @@ ENV USER_ID ${USER_ID:-1000}
 ENV GROUP_ID ${GROUP_ID:-1000}
 # you may pick VERSION(#L2) and SHASUM(#L45) from https://github.com/bitcoin-core/packaging/blob/master/snap/snapcraft.yaml
 # check VERSION matches SHASUM
-ENV VERSION 0.20.1
-ENV SHASUM b5c04fe37b40119bdc2d329b9c8fb9c0b402a10388fd0837d1a30fb0cd99b344
+ENV VERSION 22.0
+ENV SHASUM f7ba5604241732d0ec331df23c7a5f2fba3db450685e8d4aa20329378dc7d978
 ENV ARCH x86_64-linux-gnu
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
@@ -26,11 +26,11 @@ RUN set -x && apt-get update && \
       wget \
       gosu && \
     cd /tmp && \
-    wget https://bitcoincore.org/bin/bitcoin-core-${VERSION}/SHA256SUMS.asc && \
+    wget https://bitcoincore.org/bin/bitcoin-core-${VERSION}/SHA256SUMS && \
     wget https://bitcoincore.org/bin/bitcoin-core-${VERSION}/bitcoin-${VERSION}.tar.gz && \
     wget https://bitcoincore.org/bin/bitcoin-core-${VERSION}/bitcoin-${VERSION}-${ARCH}.tar.gz && \
-    echo "$SHASUM  SHA256SUMS.asc" | sha256sum --check && \
-    sha256sum --ignore-missing --check SHA256SUMS.asc && \
+    echo "$SHASUM  SHA256SUMS" | sha256sum --check && \
+    sha256sum --ignore-missing --check SHA256SUMS && \
     tar -xf bitcoin-${VERSION}-${ARCH}.tar.gz && \
     tar -xf bitcoin-${VERSION}.tar.gz && \
     echo "Running tests ..." && \
